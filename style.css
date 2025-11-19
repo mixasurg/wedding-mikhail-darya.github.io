@@ -1,0 +1,129 @@
+/* style.css – премиум 2026 */
+:root {
+    --gold: #d4af37;
+    --dark: #0a0a0a;
+    --text: #e8e8e8;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2 { font-family: 'Cinzel', serif; letter-spacing: 3px; }
+.gold { color: var(--gold); }
+
+/* Жемчужины — теперь ещё красивее */
+.pearls {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+.pearl {
+    position: absolute;
+    width: 70px;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 20px rgba(212,175,55,0.4));
+    animation: float 25s infinite linear;
+}
+@keyframes float {
+    0%   { transform: translateY(110vh) rotate(0deg); }
+    100% { transform: translateY(-100px) translateX(30vw) rotate(360deg); }
+}
+
+/* Hero */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('assets/hero-bg.jpg') center/cover no-repeat;
+    filter: brightness(0.4);
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+.names {
+    font-size: 7rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 0 40px rgba(212,175,55,0.3);
+}
+.names span { font-size: 5rem; color: var(--gold); }
+.date { font-size: 2.8rem; margin: 30px 0; color: var(--gold); }
+.countdown {
+    font-size: 1.8rem;
+    margin: 50px 0;
+    color: var(--gold);
+    letter-spacing: 8px;
+}
+.scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    animation: bounce 2s infinite;
+}
+
+/* Анимации появления */
+section { opacity: 0; transform: translateY(50px); transition: all 1.2s ease-out; }
+section.visible { opacity: 1; transform: translateY(0); }
+
+/* Фото */
+.photo-frame {
+    width: 380px;
+    padding: 12px;
+    background: linear-gradient(45deg, #d4af37, #fff, #d4af37);
+    border-radius: 50%;
+    transition: transform 0.6s;
+}
+.photo-frame img {
+    width: 100%;
+    border-radius: 50%;
+    display: block;
+}
+.photo-frame:hover { transform: scale(1.05); }
+
+/* Карта */
+.map-container {
+    width: 100%;
+    max-width: 900px;
+    height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(212,175,55,0.2);
+    margin: 40px 0;
+}
+
+/* Кнопки и форма */
+button, .gold-link {
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: white;
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.4s;
+    margin-top: 20px;
+}
+button:hover, .gold-link:hover {
+    background: var(--gold);
+    color: black;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .names { font-size: 4rem; }
+    .names span { font-size: 3rem; }
+    .date { font-size: 2rem; }
+    .photo-frame { width: 300px; }
+}

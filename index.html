@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Михаил & Дарья • 17 октября 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cinzel:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Жемчужины -->
+    <div class="pearls"></div>
+
+    <!-- Hero с параллаксом -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="names" data-aos>Mихаил <span>&</span> Дарья</h1>
+            <p class="date" data-aos>17 октября 2026</p>
+            <p class="subtitle" data-aos>С любовью приглашаем вас разделить с нами этот день</p>
+            <div class="countdown" id="countdown"></div>
+            <div class="scroll-hint">↓</div>
+        </div>
+    </section>
+
+    <!-- Фото + модальное приглашение -->
+    <section class="invitation" data-aos>
+        <div class="photo-frame" id="openInvitation">
+            <img src="assets/photo-couple.jpg" alt="Михаил и Дарья">
+        </div>
+        <p>Нажмите на фото, чтобы открыть приглашение</p>
+    </section>
+
+    </section>
+
+    <!-- Модальное приглашение -->
+    <div id="invitationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <div class="letter gold-border">
+                <h2>Дорогие наши!</h2>
+                <p>В этот день мы говорим друг другу «да» навсегда.<br>
+                И хотим, чтобы рядом были именно вы — самые близкие и любимые.</p>
+                <p>С радостью приглашаем вас на нашу свадьбу!</p>
+                <p class="signature">Михаил & Дарья</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Локация — ТОЧНАЯ -->
+    <section class="location" data-aos>
+        <h2>Место торжества</h2>
+        <p class="venue">Pine River • Амбар</p>
+        <p class="address">Калужская область, Жуковский район<br>село Истье, территория Pine River Park Hotel</p>
+
+        <div class="map-container">
+            <iframe 
+                src="https://yandex.ru/map-widget/v1/?ll=36.605583%2C55.050444&z=16&pt=36.605583,55.050444,pm2rdm"
+                allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+        <p><a href="https://yandex.ru/maps/?text=55.050444,36.605583" target="_blank" class="gold-link">Проложить маршрут →</a></p>
+    </section>
+
+    <!-- Программа -->
+    <section class="program" data-aos>
+        <h2>Программа дня</h2>
+        <div class="timeline">
+            <div class="event"><span>16:00</span> Сбор гостей • welcome prosecco</div>
+            <div class="event"><span>17:00</span> Церемония</div>
+            <div class="event"><span>18:00</span> Банкет и праздничная программа</div>
+            <div class="event"><span>23:00 →</span> Танцы до утра</div>
+        </div>
+    </section>
+
+    <!-- Дресс-код -->
+    <section class="dresscode" data-aos>
+        <h2>Дресс-код</h2>
+        <p class="main">Black Tie Optional</p>
+        <p>Элегантный чёрный • золото • жемчуг<br>Женщины — в пол, мужчины — смокинг или тёмный костюм</p>
+    </section>
+
+    <!-- Форма (ещё красивее + алкоголь + песни) -->
+    <section class="rsvp" data-aos>
+        <h2>Подтвердите присутствие</h2>
+        <p>Очень ждём ваш ответ до <strong>1 августа 2026</strong></p>
+
+        <form action="https://formspree.io/f/YOUR_ID" method="POST">
+            <input type="text" name="name" placeholder="Имя и фамилия" required>
+            <input type="text name="contact" placeholder="Телефон или email" required>
+
+            <div class="radio-group">
+                <label><input type="radio" name="attendance" value="Приду!" required> Приду с радостью</label>
+                <label><input type="radio" name="attendance" value="Не смогу"> Увы, не получится</label>
+            </div>
+
+            <p class="label">Алкогольные предпочтения</p>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="drink" value="Шампанское"> Шампанское / Просекко</label>
+                <label><input type="checkbox" name="drink" value="Белое вино"> Белое вино</label>
+                <label><input type="checkbox" name="drink" value="Красное вино"> Красное вино</label>
+                <label><input type="checkbox" name="drink" value="Водка"> Водка</label>
+                <label><input type="checkbox" name="drink" value="Виски"> Виски / Бурбон</label>
+                <label><input type="checkbox" name="drink" value="Джин"> Джин</label>
+                <label><input type="checkbox" name="drink" value="Без алкоголя"> Только безалкогольное</label>
+            </div>
+
+            <textarea name="songs" rows="3" placeholder="Ваши 3–5 любимых песен для танцпола (через запятую)"></textarea>
+            <textarea name="wishes" rows="3" placeholder="Аллергии, пожелания, +1 (имя) и всё, что хотите сказать ❤️"></textarea>
+
+            <button type="submit">Отправить</button>
+        </form>
+    </section>
+
+    <section class="final" data-aos>
+        <h2>До встречи<br>17 октября 2026</h2>
+        <p>С любовью,<br><span class="gold">Михаил & Дарья</span></p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
