@@ -1,42 +1,46 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Михаил & Дарья • 17 октября 2026</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <script>
+        document.documentElement.classList.remove('no-js');
+        document.documentElement.classList.add('js');
+    </script>
 </head>
 <body>
 
     <!-- Жемчужины -->
-    <div class="pearls"></div>
+    <div class="pearls" aria-hidden="true"></div>
 
     <!-- Первый экран: только фото -->
     <div class="intro-screen" id="introScreen">
-        <div class="photo-frame" id="openInvitation">
-            <img src="assets/photo-couple.jpg" alt="Михаил и Дарья">
-        </div>
-        <p class="photo-hint">Нажмите на фото, чтобы открыть приглашение</p>
+        <button type="button" class="photo-frame" id="openInvitation" aria-label="Открыть приглашение" aria-controls="invitationModal" aria-describedby="photoHint">
+            <img src="assets/photo-couple.jpg" alt="Михаил и Дарья" width="340" height="340">
+        </button>
+        <p class="photo-hint" id="photoHint">Нажмите на фото, чтобы открыть приглашение</p>
     </div>
 
     <!-- Модальное приглашение -->
-    <div id="invitationModal" class="modal">
+    <div id="invitationModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="invitationTitle" aria-hidden="true">
         <div class="modal-content">
-            <span class="close">×</span>
+            <button type="button" class="close-btn" aria-label="Закрыть приглашение">×</button>
             <div class="letter">
-                <h2>Дорогие наши!</h2>
+                <h2 id="invitationTitle">Дорогие наши!</h2>
                 <p>В этот день мы говорим друг другу «да» навсегда.<br>
                 И хотим, чтобы рядом были именно вы — самые близкие и любимые.</p>
                 <p>С радостью приглашаем вас на нашу свадьбу!</p>
                 <p class="signature">Михаил & Дарья</p>
-                <button id="continueBtn" class="gold-btn">Продолжить →</button>
+                <button type="button" id="continueBtn" class="gold-btn">Продолжить →</button>
             </div>
         </div>
     </div>
 
     <!-- Основной контент (скрыт до закрытия модалки) -->
-    <div id="mainContent" class="hidden">
+    <div id="mainContent" class="js-hidden">
 
         <section class="hero">
             <h1 class="names">Михаил <span>&</span> Дарья</h1>
@@ -49,18 +53,28 @@
             <p class="venue">Pine River • Амбар</p>
             <p class="address">Калужская область, Жуковский район<br>сельское поселение Трубино, территория Pine River Park Hotel</p>
             <div class="map-container"> 
-                <iframe src="https://yandex.ru/map-widget/v1/?ll=36.766145%2C54.959813&z=16&pt=36.766145,54.959813,pm2rdm" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://yandex.ru/map-widget/v1/?ll=36.766145%2C54.959813&z=16&pt=36.766145,54.959813,pm2rdm" title="Карта проезда к Pine River Park Hotel" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <p><a href="https://yandex.ru/maps/?ll=36.766145,54.959813&z=16" target="_blank" class="gold-link">Проложить маршрут →</a></p>
+            <p><a href="https://yandex.ru/maps/?ll=36.766145,54.959813&z=16" target="_blank" rel="noopener noreferrer" class="gold-link">Проложить маршрут →</a></p>
         </section>
 
         <section class="program">
-            <h2>Программа дня</h2>
-            <div class="timeline">
-                <div class="event"><span>15:00</span> Сбор гостей</div>
-                <div class="event"><span>16:00</span> Церемония</div>
-                <div class="event"><span>17:00</span> Банкет и праздничная программа</div>
-                <div class="event"><span>21:00</span> Танцы до утра</div>
+            <div class="program-frame">
+                <svg class="program-ornament" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                    <ellipse class="program-oval" cx="300" cy="450" rx="250" ry="380"></ellipse>
+                    <image class="program-pearl" href="assets/pearl.svg" width="28" height="28" x="-14" y="-14">
+                        <animateMotion dur="18s" repeatCount="indefinite" path="M50 450 a250 380 0 1 0 500 0 a250 380 0 1 0 -500 0"></animateMotion>
+                    </image>
+                </svg>
+                <div class="program-content">
+                    <h2>Программа дня</h2>
+                    <div class="timeline">
+                        <div class="event"><span class="event-time">15:00</span><span class="event-text">Сбор гостей</span></div>
+                        <div class="event"><span class="event-time">16:00</span><span class="event-text">Церемония</span></div>
+                        <div class="event"><span class="event-time">17:00</span><span class="event-text">Банкет<br>и праздничная программа</span></div>
+                        <div class="event"><span class="event-time">21:00</span><span class="event-text">Танцы до утра</span></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -98,13 +112,23 @@
     <p id="rsvpStatus" class="form-status" aria-live="polite"></p>
 </form>
 
-<iframe id="hidden_iframe" name="hidden_iframe" style="display:none;"></iframe>
+<iframe id="hidden_iframe" name="hidden_iframe" title="RSVP" style="display:none;"></iframe>
 
         </section>
 
         <section class="final">
             <h2>До встречи<br>17 октября 2026</h2>
             <p>С любовью,<br><span class="gold">Михаил & Дарья</span></p>
+        </section>
+
+        <section class="organizer">
+            <h2>Организатор</h2>
+            <p>По всем вопросам можно писать нашему организатору Элине</p>
+            <p class="contact">
+                <a class="gold-link" href="tel:+79136243383">+7 (913) 624 33-83</a><br>
+                <span class="contact-label">tg:</span>
+                <a class="gold-link" href="https://t.me/acidyouth" target="_blank" rel="noopener noreferrer">@acidyouth</a>
+            </p>
         </section>
     </div>
 
