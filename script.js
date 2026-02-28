@@ -71,19 +71,97 @@ document.addEventListener('DOMContentLoaded', () => {
     update();
     setInterval(update, 60000);
 
-    // Жемчужины (20 шт.)
-    const pearls = document.querySelector('.pearls');
-    for (let i = 0; i < 20; i++) {
-        setTimeout(() => {
-            const p = document.createElement('img');
-            p.src = 'assets/pearl.svg';
-            p.alt = '';
-            p.className = 'pearl';
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.animationDelay = Math.random() * 4 + 's';
-            p.style.animationDuration = (18 + Math.random() * 10) + 's';
-            if (pearls) pearls.appendChild(p);
-        }, i * 250);
+    // =========================
+    // Программа: подгоняем овал и траекторию жемчужины под контент
+    // =========================
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+    const fmt = (value) => Number(value).toFixed(1);
+    let ornamentRafId = 0;
+
+    const fitProgramOrnaments = () => {
+        document.querySelectorAll('.program-frame').forEach((frame) => {
+            const svg = frame.querySelector('.program-ornament');
+            const oval = frame.querySelector('.program-oval');
+            const pearl = frame.querySelector('.program-pearl');
+            const motion = pearl ? pearl.querySelector('animateMotion') : null;
+            const content = frame.querySelector('.program-content');
+            if (!svg || !oval || !pearl || !motion || !content) return;
+
+            const frameRect = frame.getBoundingClientRect();
+            const contentRect = content.getBoundingClientRect();
+            if (!frameRect.width || !frameRect.height || !contentRect.width || !contentRect.height) return;
+
+            const isMobile = window.matchMedia('(max-width: 767px)').matches;
+            const pearlSize = isMobile ? 25 : 25;
+            const pearlRadius = pearlSize / 2;
+            const paddingX = isMobile ? 16 : 56;
+            const paddingY = isMobile ? 58 : 78;
+            const edgeGap = 12;
+            const orbitInset = edgeGap + pearlRadius + 10;
+
+            const cx = (contentRect.left - frameRect.left) + (contentRect.width / 2);
+            const cy = (contentRect.top - frameRect.top) + (contentRect.height / 2);
+
+            const maxRxByCenter = Math.max(24, Math.min(cx - orbitInset, frameRect.width - cx - orbitInset));
+            const maxRyByCenter = Math.max(24, Math.min(cy - orbitInset, frameRect.height - cy - orbitInset));
+
+            const targetRx = (contentRect.width / 2) + paddingX;
+            const targetRy = (contentRect.height / 2) + paddingY;
+            const minSafeRx = Math.min(maxRxByCenter, (contentRect.width / 2) + (isMobile ? 8 : 20));
+            const minRx = Math.min(maxRxByCenter, isMobile ? 90 : 125);
+            const minRy = Math.min(maxRyByCenter, isMobile ? 145 : 210);
+            let rx = clamp(targetRx, Math.max(minRx, minSafeRx), maxRxByCenter);
+            const minAspect = isMobile ? 1.58 : 1.34;
+            let ry = clamp(Math.max(targetRy, rx * minAspect), minRy, maxRyByCenter);
+
+            // Если высоты не хватает для нужной "вертикальности", ужимаем радиус по X.
+            if (ry / rx < minAspect) {
+                const rxByAspect = ry / minAspect;
+                rx = clamp(Math.min(rx, rxByAspect), Math.max(minRx, minSafeRx), maxRxByCenter);
+                ry = clamp(Math.max(targetRy, rx * minAspect), minRy, maxRyByCenter);
+            }
+
+            svg.setAttribute('viewBox', `0 0 ${fmt(frameRect.width)} ${fmt(frameRect.height)}`);
+            oval.setAttribute('cx', fmt(cx));
+            oval.setAttribute('cy', fmt(cy));
+            oval.setAttribute('rx', fmt(rx));
+            oval.setAttribute('ry', fmt(ry));
+
+            pearl.setAttribute('width', String(pearlSize));
+            pearl.setAttribute('height', String(pearlSize));
+            pearl.setAttribute('x', String(-pearlSize / 2));
+            pearl.setAttribute('y', String(-pearlSize / 2));
+
+            const path = [
+                `M ${fmt(cx - rx)} ${fmt(cy)}`,
+                `a ${fmt(rx)} ${fmt(ry)} 0 1 0 ${fmt(rx * 2)} 0`,
+                `a ${fmt(rx)} ${fmt(ry)} 0 1 0 ${fmt(-rx * 2)} 0`
+            ].join(' ');
+            motion.setAttribute('path', path);
+            motion.setAttribute('dur', isMobile ? '20s' : '18s');
+        });
+    };
+
+    const scheduleProgramOrnamentsFit = () => {
+        if (ornamentRafId) cancelAnimationFrame(ornamentRafId);
+        ornamentRafId = requestAnimationFrame(() => {
+            fitProgramOrnaments();
+            ornamentRafId = 0;
+        });
+    };
+
+    scheduleProgramOrnamentsFit();
+    window.addEventListener('resize', scheduleProgramOrnamentsFit, { passive: true });
+
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(scheduleProgramOrnamentsFit).catch(() => {});
+    }
+
+    if ('ResizeObserver' in window) {
+        const programResizeObserver = new ResizeObserver(scheduleProgramOrnamentsFit);
+        document.querySelectorAll('.program-frame, .program-content').forEach((el) => {
+            programResizeObserver.observe(el);
+        });
     }
 
     // =========================

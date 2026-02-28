@@ -13,9 +13,6 @@
 </head>
 <body>
 
-    <!-- Жемчужины -->
-    <div class="pearls" aria-hidden="true"></div>
-
     <!-- Первый экран: только фото -->
     <div class="intro-screen" id="introScreen">
         <button type="button" class="photo-frame" id="openInvitation" aria-label="Открыть приглашение" aria-controls="invitationModal" aria-describedby="photoHint">
@@ -62,7 +59,7 @@
             <div class="program-frame">
                 <svg class="program-ornament" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                     <ellipse class="program-oval" cx="300" cy="450" rx="250" ry="380"></ellipse>
-                    <image class="program-pearl" href="assets/pearl.svg" width="28" height="28" x="-14" y="-14">
+                    <image class="program-pearl" href="assets/pearl.png" width="28" height="28" x="-14" y="-14">
                         <animateMotion dur="18s" repeatCount="indefinite" path="M50 450 a250 380 0 1 0 500 0 a250 380 0 1 0 -500 0"></animateMotion>
                     </image>
                 </svg>
@@ -92,13 +89,18 @@
 
     <p class="label">Алкогольные предпочтения</p>
     <div class="checkbox-group">
-        <label><input type="checkbox" name="drink" value="Шампанское"> Шампанское / Просекко</label>
-        <label><input type="checkbox" name="drink" value="Белое вино"> Белое вино</label>
-        <label><input type="checkbox" name="drink" value="Красное вино"> Красное вино</label>
+        <label><input type="checkbox" name="drink" value="Белое полусладкое вино"> Белое полусладкое вино</label>
+        <label><input type="checkbox" name="drink" value="Белое полусухое вино"> Белое полусухое вино</label>
+        <label><input type="checkbox" name="drink" value="Красное полусладкое вино"> Красное полусладкое вино</label>
+        <label><input type="checkbox" name="drink" value="Красное полусухое вино"> Красное полусухое вино</label>
+        <label><input type="checkbox" name="drink" value="Розовое полусухое вино"> Розовое полусухое вино</label>
+        <label><input type="checkbox" name="drink" value="Игристое брют"> Игристое брют</label>
+        <label><input type="checkbox" name="drink" value="Игристое полусладкое"> Игристое полусладкое</label>
+        <label><input type="checkbox" name="drink" value="Коньяк / бренди"> Коньяк / бренди</label>
+        <label><input type="checkbox" name="drink" value="Ром"> Ром</label>
         <label><input type="checkbox" name="drink" value="Водка"> Водка</label>
         <label><input type="checkbox" name="drink" value="Виски"> Виски</label>
         <label><input type="checkbox" name="drink" value="Джин"> Джин</label>
-        <label><input type="checkbox" name="drink" value="Без алкоголя"> Только безалкогольное</label>
     </div>
 
     <textarea name="songs" rows="3" placeholder="Ваши 3–5 любимых песен (через запятую)"></textarea>
