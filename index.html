@@ -75,16 +75,29 @@
             </div>
         </section>
 
+        <section class="flowers">
+            <h2>Небольшая просьба о цветах</h2>
+            <p>Если захотите подарить нам букет, пожалуйста, не добавляйте в него цветы, которые опасны для нашей кошки.</p>
+            <p class="flowers-examples">Например: лилии, тюльпаны, нарциссы и хризантемы.</p>
+        </section>
+
         <section class="rsvp">
             <h2>Подтвердите присутствие</h2>
             <p>Очень ждём ваш ответ до <strong>1 августа 2026</strong></p>
-            <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbwPxnzQO5mKJjIoNerWO1wXK0eKYj0D4N1dMVuTrYbGtzxQRv6F9g9AFoDmoyAiOsCu/exec" method="POST" target="hidden_iframe">
+            <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycby4pCMXYpiwDpssPY1krmH58hIDRxIwF1DUFE7Ycs8sEpzocmaNTzIX4rIPRODjnYYO/exec" method="POST" target="hidden_iframe">
     <input type="text" name="name" placeholder="Имя и фамилия" required>
     <input type="text" name="contact" placeholder="Телефон или email" required>
 
     <div class="radio-group">
         <label><input type="radio" name="attendance" value="Приду!" required> Приду с радостью</label>
         <label><input type="radio" name="attendance" value="Не смогу"> Увы, не получится</label>
+    </div>
+
+    <p class="label">Нужен ли вам трансфер до площадки и обратно?</p>
+    <div class="radio-group">
+        <label><input type="radio" name="transfer" value="Да, нужен" required> Да, нужен</label>
+        <label><input type="radio" name="transfer" value="Нет, доберусь самостоятельно"> Нет, доберусь самостоятельно</label>
+        <label><input type="radio" name="transfer" value="Пока не знаю"> Пока не знаю</label>
     </div>
 
     <p class="label">Алкогольные предпочтения</p>
@@ -102,6 +115,37 @@
         <label><input type="checkbox" name="drink" value="Виски"> Виски</label>
         <label><input type="checkbox" name="drink" value="Джин"> Джин</label>
     </div>
+
+    <p class="label">Предпочтения по блюдам</p>
+    <fieldset class="meal-options">
+        <legend>Выберите один вариант горячего</legend>
+        <p class="meal-category">Птица</p>
+        <div class="radio-group">
+            <label><input type="radio" name="meal_choice" value="Птица: Куриная грудка на гриле с мясным джусом" required> Куриная грудка на гриле с мясным джусом</label>
+            <label><input type="radio" name="meal_choice" value="Птица: Утиная ножка с брусникой"> Утиная ножка с брусникой</label>
+        </div>
+
+        <p class="meal-category">Мясо</p>
+        <div class="radio-group">
+            <label><input type="radio" name="meal_choice" value="Мясо: Альтернативный стейк с соусом чимичурри (говяжий стейк, рекомендуемая прожарка medium)"> Альтернативный стейк с соусом чимичурри (говяжий стейк с насыщенным мясным вкусом, рекомендуемая прожарка medium)</label>
+            <label><input type="radio" name="meal_choice" value="Мясо: Топ блейд со сливочным демигляс (стейк из говядины томлённый 24 часа)"> Топ блейд со сливочным демигляс (стейк из говядины томлённый 24 часа)</label>
+            <label><input type="radio" name="meal_choice" value="Мясо: Говяжья вырезка с соусом демигляс"> Говяжья вырезка с соусом демигляс</label>
+            <label><input type="radio" name="meal_choice" value="Мясо: Лопатка ягнёнка на кости с соусом из кориандра"> Лопатка ягнёнка на кости с соусом из кориандра</label>
+        </div>
+
+        <p class="meal-category">Рыба</p>
+        <div class="radio-group">
+            <label><input type="radio" name="meal_choice" value="Рыба: Филе семги с соусом сливочный порей"> Филе семги с соусом сливочный порей</label>
+            <label><input type="radio" name="meal_choice" value="Рыба: Филе палтуса с соусом из фенхеля"> Филе палтуса с соусом из фенхеля</label>
+        </div>
+
+        <p class="meal-category">Овощи</p>
+        <div class="radio-group">
+            <label><input type="radio" name="meal_choice" value="Овощи: Карамелизованный баклажан с соусом из тхины и хумуса"> Карамелизованный баклажан с соусом из тхины и хумуса</label>
+            <label><input type="radio" name="meal_choice" value="Овощи: Стейк из цветной капусты с соусом бёр нуазет"> Стейк из цветной капусты с соусом бёр нуазет</label>
+        </div>
+    </fieldset>
+    <p class="form-note">Можно выбрать только один вариант.</p>
 
     <textarea name="songs" rows="3" placeholder="Ваши 3–5 любимых песен (через запятую)"></textarea>
     <textarea name="wishes" rows="3" placeholder="Аллергии, пожелания и всё, что хотите сказать ❤️"></textarea>

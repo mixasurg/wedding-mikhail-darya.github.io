@@ -265,6 +265,7 @@ section {
 /* Локация */
 .location h2,
 .program h2,
+.flowers h2,
 .rsvp h2,
 .final h2,
 .organizer h2 {
@@ -369,6 +370,17 @@ section {
     display: block;
 }
 
+/* Пожелания по цветам */
+.flowers p {
+    font-size: clamp(0.98rem, 4vw, 1.15rem);
+    line-height: 1.75;
+}
+
+.flowers-examples {
+    margin-top: 0.7rem;
+    color: var(--gold);
+}
+
 /* Дресс-код */
 .dresscode .main {
     font-size: clamp(1.3rem, 6.4vw, 2.2rem);
@@ -415,6 +427,48 @@ section {
 .label {
     margin-top: 0.45rem;
     text-align: left;
+}
+
+.form-note {
+    font-size: 0.92rem;
+    text-align: left;
+    color: var(--light-text);
+}
+
+.meal-options {
+    width: 100%;
+    margin: 0;
+    padding: 0.8rem 0.9rem 0.95rem;
+    border: 1px solid var(--field-border);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    text-align: left;
+}
+
+.meal-options legend {
+    padding: 0 0.25rem;
+    color: var(--light-text);
+    font-size: 0.92rem;
+}
+
+.meal-options .radio-group {
+    margin-top: 0.45rem;
+}
+
+.meal-category {
+    margin-top: 0.95rem;
+    color: var(--gold);
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+}
+
+.meal-options .meal-category:first-of-type {
+    margin-top: 0.15rem;
+}
+
+.meal-options .radio-group label {
+    font-size: clamp(0.93rem, 3.7vw, 1.02rem);
+    line-height: 1.4;
 }
 
 .checkbox-group,
