@@ -13,18 +13,9 @@
 </head>
 <body>
 
-    <!-- Первый экран: только фото -->
-    <div class="intro-screen" id="introScreen">
-        <button type="button" class="photo-frame" id="openInvitation" aria-label="Открыть приглашение" aria-controls="invitationModal" aria-describedby="photoHint">
-            <img src="assets/photo-couple.jpg" alt="Михаил и Дарья" width="340" height="340">
-        </button>
-        <p class="photo-hint" id="photoHint">Нажмите на фото, чтобы открыть приглашение</p>
-    </div>
-
     <!-- Модальное приглашение -->
     <div id="invitationModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="invitationTitle" aria-hidden="true">
         <div class="modal-content">
-            <button type="button" class="close-btn" aria-label="Закрыть приглашение">×</button>
             <div class="letter">
                 <h2 id="invitationTitle">Дорогие наши!</h2>
                 <p>В этот день мы говорим друг другу «да» навсегда.<br>
@@ -40,14 +31,43 @@
     <div id="mainContent" class="js-hidden">
 
         <section class="hero">
-            <h1 class="names">Михаил <span>&</span> Дарья</h1>
-            <p class="date">17 октября 2026</p>
-            <div class="countdown" id="countdown"></div>
+            <div class="hero-shell">
+                <figure class="hero-side-photo hero-side-photo-left hero-side-photo-misha">
+                    <img src="assets/Misha.png" alt="Детское фото Михаила" width="294" height="654" loading="lazy">
+                </figure>
+                <div class="hero-main">
+                    <h1 class="names">Михаил <span>&</span> Дарья</h1>
+                    <p class="date">17 октября 2026</p>
+                    <div class="countdown" id="countdown"></div>
+
+                    <div class="october-week" aria-label="Неделя октября 12–18, дата свадьбы 17 октября">
+                        <p class="week-title">Октябрь 2026</p>
+                        <div class="week-grid">
+                            <div class="week-day"><span>Пн</span><strong>12</strong></div>
+                            <div class="week-day"><span>Вт</span><strong>13</strong></div>
+                            <div class="week-day"><span>Ср</span><strong>14</strong></div>
+                            <div class="week-day"><span>Чт</span><strong>15</strong></div>
+                            <div class="week-day"><span>Пт</span><strong>16</strong></div>
+                            <div class="week-day week-day-heart">
+                                <span>Сб</span>
+                                <span class="heart-number"><span class="heart-number-text">17</span></span>
+                            </div>
+                            <div class="week-day"><span>Вс</span><strong>18</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <figure class="hero-side-photo hero-side-photo-right">
+                    <img src="assets/photo-couple.jpg" alt="Михаил и Дарья" width="340" height="340" loading="lazy">
+                </figure>
+            </div>
         </section>
 
         <section class="location">
             <h2>Место торжества</h2>
             <p class="venue">Pine River • Амбар</p>
+            <figure class="location-photo">
+                <img src="assets/Ambar.jpg" alt="Амбар в Pine River Park Hotel" width="1280" height="853" loading="lazy">
+            </figure>
             <p class="address">Калужская область, Жуковский район<br>сельское поселение Трубино, территория Pine River Park Hotel</p>
             <div class="map-container"> 
                 <iframe src="https://yandex.ru/map-widget/v1/?ll=36.766145%2C54.959813&z=16&pt=36.766145,54.959813,pm2rdm" title="Карта проезда к Pine River Park Hotel" allowfullscreen="" loading="lazy"></iframe>
@@ -57,19 +77,13 @@
 
         <section class="program">
             <div class="program-frame">
-                <svg class="program-ornament" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                    <ellipse class="program-oval" cx="300" cy="450" rx="250" ry="380"></ellipse>
-                    <image class="program-pearl" href="assets/pearl.png" width="28" height="28" x="-14" y="-14">
-                        <animateMotion dur="18s" repeatCount="indefinite" path="M50 450 a250 380 0 1 0 500 0 a250 380 0 1 0 -500 0"></animateMotion>
-                    </image>
-                </svg>
                 <div class="program-content">
                     <h2>Программа дня</h2>
                     <div class="timeline">
                         <div class="event"><span class="event-time">15:00</span><span class="event-text">Сбор гостей</span></div>
                         <div class="event"><span class="event-time">16:00</span><span class="event-text">Церемония</span></div>
-                        <div class="event"><span class="event-time">17:00</span><span class="event-text">Банкет<br>и праздничная программа</span></div>
-                        <div class="event"><span class="event-time">21:00</span><span class="event-text">Танцы до утра</span></div>
+                        <div class="event"><span class="event-time">17:00</span><span class="event-text">Банкет и праздничная программа</span></div>
+                        <div class="event"><span class="event-time">22:00</span><span class="event-text">Окончание вечера</span></div>
                     </div>
                 </div>
             </div>
@@ -78,7 +92,7 @@
         <section class="flowers">
             <h2>Небольшая просьба о цветах</h2>
             <p>Если захотите подарить нам букет, пожалуйста, не добавляйте в него цветы, которые опасны для нашей кошки.</p>
-            <p class="flowers-examples">Например: лилии, тюльпаны, нарциссы и хризантемы.</p>
+            <p class="flowers-examples">Например: лилии и тюльпаны.</p>
         </section>
 
         <section class="rsvp">
@@ -92,24 +106,21 @@
         <label><input type="radio" name="attendance" value="Приду!" required> Приду с радостью</label>
         <label><input type="radio" name="attendance" value="Не смогу"> Увы, не получится</label>
     </div>
-
-    <p class="label">Нужен ли вам трансфер до площадки и обратно?</p>
-    <div class="radio-group">
-        <label><input type="radio" name="transfer" value="Да, нужен" required> Да, нужен</label>
-        <label><input type="radio" name="transfer" value="Нет, доберусь самостоятельно"> Нет, доберусь самостоятельно</label>
-        <label><input type="radio" name="transfer" value="Пока не знаю"> Пока не знаю</label>
-    </div>
+    <input type="hidden" name="transfer" value="">
 
     <p class="label">Алкогольные предпочтения</p>
     <div class="checkbox-group">
         <label><input type="checkbox" name="drink" value="Белое полусладкое вино"> Белое полусладкое вино</label>
+        <label><input type="checkbox" name="drink" value="Белое сухое вино"> Белое сухое вино</label>
         <label><input type="checkbox" name="drink" value="Белое полусухое вино"> Белое полусухое вино</label>
         <label><input type="checkbox" name="drink" value="Красное полусладкое вино"> Красное полусладкое вино</label>
+        <label><input type="checkbox" name="drink" value="Красное сухое вино"> Красное сухое вино</label>
         <label><input type="checkbox" name="drink" value="Красное полусухое вино"> Красное полусухое вино</label>
+        <label><input type="checkbox" name="drink" value="Розовое сухое вино"> Розовое сухое вино</label>
         <label><input type="checkbox" name="drink" value="Розовое полусухое вино"> Розовое полусухое вино</label>
         <label><input type="checkbox" name="drink" value="Игристое брют"> Игристое брют</label>
         <label><input type="checkbox" name="drink" value="Игристое полусладкое"> Игристое полусладкое</label>
-        <label><input type="checkbox" name="drink" value="Коньяк / бренди"> Коньяк / бренди</label>
+        <label><input type="checkbox" name="drink" value="Коньяк"> Коньяк</label>
         <label><input type="checkbox" name="drink" value="Ром"> Ром</label>
         <label><input type="checkbox" name="drink" value="Водка"> Водка</label>
         <label><input type="checkbox" name="drink" value="Виски"> Виски</label>
@@ -118,34 +129,45 @@
 
     <p class="label">Предпочтения по блюдам</p>
     <fieldset class="meal-options">
-        <legend>Выберите один вариант горячего</legend>
+        <legend>Выберите <span class="legend-accent">один</span> вариант горячего</legend>
         <p class="meal-category">Птица</p>
         <div class="radio-group">
-            <label><input type="radio" name="meal_choice" value="Птица: Куриная грудка на гриле с мясным джусом" required> Куриная грудка на гриле с мясным джусом</label>
-            <label><input type="radio" name="meal_choice" value="Птица: Утиная ножка с брусникой"> Утиная ножка с брусникой</label>
+            <label><input type="radio" name="meal_main" value="Птица: Куриная грудка на гриле с мясным джусом" required> Куриная грудка на гриле с мясным джусом</label>
+            <label><input type="radio" name="meal_main" value="Птица: Утиная ножка с брусникой"> Утиная ножка с брусникой</label>
         </div>
 
         <p class="meal-category">Мясо</p>
         <div class="radio-group">
-            <label><input type="radio" name="meal_choice" value="Мясо: Альтернативный стейк с соусом чимичурри (говяжий стейк, рекомендуемая прожарка medium)"> Альтернативный стейк с соусом чимичурри (говяжий стейк с насыщенным мясным вкусом, рекомендуемая прожарка medium)</label>
-            <label><input type="radio" name="meal_choice" value="Мясо: Топ блейд со сливочным демигляс (стейк из говядины томлённый 24 часа)"> Топ блейд со сливочным демигляс (стейк из говядины томлённый 24 часа)</label>
-            <label><input type="radio" name="meal_choice" value="Мясо: Говяжья вырезка с соусом демигляс"> Говяжья вырезка с соусом демигляс</label>
-            <label><input type="radio" name="meal_choice" value="Мясо: Лопатка ягнёнка на кости с соусом из кориандра"> Лопатка ягнёнка на кости с соусом из кориандра</label>
+            <label><input type="radio" name="meal_main" value="Мясо: Альтернативный стейк с соусом чимичурри (говяжий стейк, рекомендуемая прожарка medium)"> Альтернативный стейк с соусом чимичурри (говяжий стейк с насыщенным мясным вкусом, рекомендуемая прожарка medium)</label>
+            <label><input type="radio" name="meal_main" value="Мясо: Топ блейд со сливочным демигляс (стейк из говядины томлённый 24 часа)"> Топ блейд со сливочным демигляс (стейк из говядины томлённый 24 часа)</label>
+            <label><input type="radio" name="meal_main" value="Мясо: Говяжья вырезка с соусом демигляс"> Говяжья вырезка с соусом демигляс</label>
+            <label><input type="radio" name="meal_main" value="Мясо: Лопатка ягнёнка на кости с соусом из кориандра"> Лопатка ягнёнка на кости с соусом из кориандра</label>
         </div>
 
         <p class="meal-category">Рыба</p>
         <div class="radio-group">
-            <label><input type="radio" name="meal_choice" value="Рыба: Филе семги с соусом сливочный порей"> Филе семги с соусом сливочный порей</label>
-            <label><input type="radio" name="meal_choice" value="Рыба: Филе палтуса с соусом из фенхеля"> Филе палтуса с соусом из фенхеля</label>
+            <label><input type="radio" name="meal_main" value="Рыба: Филе семги с соусом сливочный порей"> Филе семги с соусом сливочный порей</label>
+            <label><input type="radio" name="meal_main" value="Рыба: Филе палтуса с соусом из фенхеля"> Филе палтуса с соусом из фенхеля</label>
         </div>
 
         <p class="meal-category">Овощи</p>
         <div class="radio-group">
-            <label><input type="radio" name="meal_choice" value="Овощи: Карамелизованный баклажан с соусом из тхины и хумуса"> Карамелизованный баклажан с соусом из тхины и хумуса</label>
-            <label><input type="radio" name="meal_choice" value="Овощи: Стейк из цветной капусты с соусом бёр нуазет"> Стейк из цветной капусты с соусом бёр нуазет</label>
+            <label><input type="radio" name="meal_main" value="Овощи: Карамелизованный баклажан с соусом из тхины и хумуса"> Карамелизованный баклажан с соусом из тхины и хумуса</label>
+            <label><input type="radio" name="meal_main" value="Овощи: Стейк из цветной капусты с соусом бёр нуазет"> Стейк из цветной капусты с соусом бёр нуазет</label>
         </div>
     </fieldset>
-    <p class="form-note">Можно выбрать только один вариант.</p>
+
+    <fieldset class="meal-options">
+        <legend>Выберите <span class="legend-accent">один</span> гарнир</legend>
+        <p class="meal-category">Гарнир</p>
+        <div class="radio-group">
+            <label><input type="radio" name="meal_garnish" value="Жареный бейби картофель с чесноком и тимьяном" required> Жареный бейби картофель с чесноком и тимьяном</label>
+            <label><input type="radio" name="meal_garnish" value="Булгур с грибами"> Булгур с грибами</label>
+            <label><input type="radio" name="meal_garnish" value="Овощи на гриле (томат, болгарский перец, цукини, баклажан, чеснок)"> Овощи на гриле (томат, болгарский перец, цукини, баклажан, чеснок)</label>
+            <label><input type="radio" name="meal_garnish" value="Соте из зеленых овощей (состав меняется по сезону)"> Соте из зеленых овощей (состав меняется по сезону)</label>
+        </div>
+    </fieldset>
+    <input type="hidden" name="meal_choice" id="mealChoiceCombined">
 
     <textarea name="songs" rows="3" placeholder="Ваши 3–5 любимых песен (через запятую)"></textarea>
     <textarea name="wishes" rows="3" placeholder="Аллергии, пожелания и всё, что хотите сказать ❤️"></textarea>
