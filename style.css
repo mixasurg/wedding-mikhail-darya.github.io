@@ -222,6 +222,11 @@ section {
     object-position: top center;
 }
 
+.hero-side-photo-dasha img {
+    transform: scale(1.48);
+    transform-origin: 46% 58%;
+}
+
 .names {
     font-size: clamp(2.35rem, 14vw, 7.5rem);
     line-height: 0.95;
@@ -742,6 +747,10 @@ section {
 
     .hero-side-photo-misha {
         max-width: 152px;
+    }
+
+    .hero-side-photo-dasha img {
+        transform: scale(1.7);
     }
 
     .hero-side-photo-left {
