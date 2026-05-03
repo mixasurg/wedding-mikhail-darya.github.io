@@ -56,6 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const status = document.getElementById('rsvpStatus');
 
     if (form && iframe) {
+        const attendanceInputs = form.querySelectorAll('input[name="attendance"]');
+        const mealOptionGroups = form.querySelectorAll('.meal-options');
         const mealMainInputs = form.querySelectorAll('input[name="meal_main"]');
         const mealGarnishInputs = form.querySelectorAll('input[name="meal_garnish"]');
         const mealChoiceCombined = document.getElementById('mealChoiceCombined');
@@ -77,10 +79,37 @@ document.addEventListener('DOMContentLoaded', () => {
             mealChoiceCombined.value = mainValue || '';
         };
 
+        const setMealRequired = (isRequired) => {
+            mealMainInputs.forEach((input) => { input.required = false; });
+            mealGarnishInputs.forEach((input) => { input.required = false; });
+            if (mealMainInputs[0]) mealMainInputs[0].required = isRequired;
+            if (mealGarnishInputs[0]) mealGarnishInputs[0].required = isRequired;
+        };
+
+        const updateMealStateByAttendance = () => {
+            const selectedAttendance = form.querySelector('input[name="attendance"]:checked');
+            const isNotComing = !!selectedAttendance && selectedAttendance.value === 'Не смогу';
+
+            mealOptionGroups.forEach((group) => {
+                group.disabled = isNotComing;
+            });
+
+            if (isNotComing) {
+                mealMainInputs.forEach((input) => { input.checked = false; });
+                mealGarnishInputs.forEach((input) => { input.checked = false; });
+            }
+
+            setMealRequired(!isNotComing);
+            updateMealChoiceCombined();
+        };
+
+        attendanceInputs.forEach((input) => input.addEventListener('change', updateMealStateByAttendance));
         mealMainInputs.forEach((input) => input.addEventListener('change', updateMealChoiceCombined));
         mealGarnishInputs.forEach((input) => input.addEventListener('change', updateMealChoiceCombined));
+        updateMealStateByAttendance();
 
         form.addEventListener('submit', () => {
+            updateMealStateByAttendance();
             updateMealChoiceCombined();
             submitted = true;
             if (status) status.textContent = 'Отправляем…';
@@ -99,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (status) status.textContent = 'Спасибо! Ответ записан ❤️';
             form.reset();
-            updateMealChoiceCombined();
+            updateMealStateByAttendance();
         });
     }
 });

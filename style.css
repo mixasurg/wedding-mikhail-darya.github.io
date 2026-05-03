@@ -1,12 +1,12 @@
 /* style.css — mobile-first 2026 */
 :root {
-    --gold: #b88d1e;
-    --dark: #f7f2e9;
+    --gold: #d88ba0;
+    --dark: #fff6fb;
     --text: #2f271d;
-    --light-text: #746756;
-    --panel: #fffaf2;
-    --field: #fffdf8;
-    --field-border: #d8ccb6;
+    --light-text: #7b6470;
+    --panel: #fffafe;
+    --field: #fffdfd;
+    --field-border: #e8d4dc;
     --section-max: 1100px;
 }
 
@@ -22,7 +22,7 @@ body {
 }
 
 body {
-    background: radial-gradient(circle at top, #fffdf7 0%, var(--dark) 55%, #f2ebdd 100%);
+    background: radial-gradient(circle at top, #ffffff 0%, var(--dark) 55%, #ffeef6 100%);
     color: var(--text);
     font-family: 'Roboto', sans-serif;
     line-height: 1.5;
@@ -59,7 +59,7 @@ p {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(247, 240, 228, 0.92);
+    background: rgba(255, 243, 249, 0.92);
     backdrop-filter: blur(4px);
     padding: 1rem;
     align-items: flex-start;
@@ -74,9 +74,9 @@ p {
     max-height: calc(100dvh - 2rem);
     overflow-y: auto;
     background: var(--panel);
-    border: 1px solid #e6d9bf;
+    border: 1px solid #efd7e0;
     border-radius: 20px;
-    box-shadow: 0 24px 60px rgba(145, 116, 43, 0.2);
+    box-shadow: 0 24px 60px rgba(166, 104, 125, 0.2);
     text-align: center;
     position: relative;
     padding: clamp(2.25rem, 7vw, 3.75rem) clamp(1.1rem, 6vw, 3.125rem);
@@ -105,9 +105,9 @@ p {
     min-height: 48px;
     padding: 0.8rem 1.8rem;
     border: 2px solid var(--gold);
-    background: transparent;
-    color: var(--gold);
-    border-radius: 4px;
+    background: #ffeaf1;
+    color: #9c5f72;
+    border-radius: 12px;
     font-size: clamp(1rem, 4vw, 1.15rem);
     cursor: pointer;
     transition: all 0.35s;
@@ -115,7 +115,7 @@ p {
 
 .gold-btn:hover {
     background: var(--gold);
-    color: #fffaf2;
+    color: #fff8fb;
 }
 
 /* ==================== ОСНОВНОЙ КОНТЕНТ ==================== */
@@ -214,7 +214,7 @@ section {
     width: 100%;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 8px 16px rgba(96, 76, 33, 0.22));
+    filter: drop-shadow(0 8px 16px rgba(126, 84, 98, 0.2));
 }
 
 .hero-side-photo-misha img {
@@ -276,9 +276,9 @@ section {
 .week-day {
     min-height: 64px;
     padding: 0.35rem 0.2rem;
-    border: 1px solid #e7dbc8;
+    border: 1px solid #ecdde4;
     border-radius: 12px;
-    background: rgba(255, 252, 247, 0.82);
+    background: rgba(255, 250, 252, 0.86);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -308,25 +308,21 @@ section {
 }
 
 .heart-number {
-    width: 36px;
-    height: 34px;
+    width: 40px;
+    height: 37px;
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    filter: drop-shadow(0 3px 4px rgba(177, 54, 70, 0.22));
 }
 
-.heart-number::before {
-    content: "\2665";
+.heart-icon {
     position: absolute;
     inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    line-height: 1;
-    color: #d66e7a;
-    filter: drop-shadow(0 3px 4px rgba(177, 54, 70, 0.22));
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .heart-number-text {
@@ -335,7 +331,7 @@ section {
     font-size: 0.83rem;
     font-weight: 700;
     line-height: 1;
-    transform: translateY(-1px);
+    transform: translateY(0.5px);
     z-index: 1;
 }
 
@@ -380,8 +376,8 @@ section {
     margin: 0.9rem 0 1.3rem;
     border-radius: 18px;
     overflow: hidden;
-    border: 1px solid #e1d5be;
-    box-shadow: 0 14px 34px rgba(151, 122, 56, 0.2);
+    border: 1px solid #ecdce3;
+    box-shadow: 0 14px 34px rgba(164, 104, 127, 0.18);
 }
 
 .location-photo img {
@@ -404,7 +400,7 @@ section {
     margin: 1.5rem 0;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 16px 44px rgba(212, 175, 55, 0.25);
+    box-shadow: 0 16px 44px rgba(207, 132, 164, 0.22);
 }
 
 .map-container iframe {
@@ -429,10 +425,10 @@ section {
 .program-content {
     width: min(100%, 560px);
     padding: clamp(1.1rem, 3.6vw, 1.6rem) clamp(0.95rem, 3.3vw, 1.4rem);
-    border: 1px solid #e0d2b8;
+    border: 1px solid #ead9e1;
     border-radius: 18px;
-    background: linear-gradient(160deg, rgba(255, 252, 246, 0.96), rgba(249, 241, 227, 0.95));
-    box-shadow: 0 14px 30px rgba(151, 122, 56, 0.14);
+    background: linear-gradient(160deg, rgba(255, 250, 253, 0.96), rgba(255, 238, 246, 0.95));
+    box-shadow: 0 14px 30px rgba(164, 104, 127, 0.14);
 }
 
 .timeline {
@@ -453,7 +449,7 @@ section {
     align-items: center;
     text-align: left;
     padding: 0.58rem 0;
-    border-bottom: 1px solid rgba(184, 141, 30, 0.18);
+    border-bottom: 1px solid rgba(216, 139, 160, 0.2);
 }
 
 .event:last-child {
@@ -461,7 +457,7 @@ section {
 }
 
 .event-time {
-    color: #805f0c;
+    color: #9a4e66;
     text-align: center;
     font-variant-numeric: tabular-nums;
     font-weight: 700;
@@ -470,9 +466,9 @@ section {
     align-items: center;
     justify-content: center;
     padding: 0.34rem 0.48rem;
-    border: 1px solid rgba(184, 141, 30, 0.35);
+    border: 1px solid rgba(216, 139, 160, 0.38);
     border-radius: 999px;
-    background: rgba(255, 245, 219, 0.85);
+    background: rgba(255, 235, 243, 0.9);
 }
 
 .event-text {
@@ -532,7 +528,7 @@ section {
 
 .rsvp input::placeholder,
 .rsvp textarea::placeholder {
-    color: #9c8e78;
+    color: #9f8490;
 }
 
 .label {
@@ -552,7 +548,7 @@ section {
     padding: 0.8rem 0.9rem 0.95rem;
     border: 1px solid var(--field-border);
     border-radius: 10px;
-    background: rgba(255, 251, 243, 0.88);
+    background: rgba(255, 247, 251, 0.9);
     text-align: left;
 }
 
@@ -570,8 +566,8 @@ section {
     display: inline-block;
     padding: 0.02rem 0.38rem;
     border-radius: 999px;
-    background: rgba(184, 141, 30, 0.2);
-    color: #7d5a06;
+    background: rgba(216, 139, 160, 0.24);
+    color: #8e4d63;
     font-weight: 700;
     line-height: 1.1;
 }
@@ -629,8 +625,8 @@ section {
     margin-top: 0.55rem;
     padding: 0.85rem;
     border: 2px solid var(--gold);
-    background: transparent;
-    color: var(--text);
+    background: #ffeaf1;
+    color: #8f4f62;
     font-size: clamp(1rem, 4.4vw, 1.2rem);
     cursor: pointer;
     transition: 0.35s;
@@ -638,7 +634,7 @@ section {
 
 .rsvp button:hover {
     background: var(--gold);
-    color: #fffaf2;
+    color: #fff8fb;
 }
 
 .form-status {
