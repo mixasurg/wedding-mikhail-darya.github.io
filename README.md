@@ -31,10 +31,11 @@ npm run dev
 
 ```bash
 npm run lint
-npm run build:pages
+npm run build
+npm test
 ```
 
-Готовая статическая версия для GitHub Pages создаётся в папке `out`.
+Готовый Cloudflare Worker создаётся в `dist/server/index.js`.
 
 ## Анкета
 
@@ -62,4 +63,6 @@ Workflow `.github/workflows/pages.yml` сам установит зависим�
 
 - `npm run dev` — локальная версия;
 - `npm run lint` — проверка исходников;
+- `npm run build` — production-сборка;
 - `npm run build:pages` — статическая сборка в `out` для GitHub Pages;
+- `npm test` — сборка и базовый тест;

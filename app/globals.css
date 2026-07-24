@@ -2085,9 +2085,9 @@ fieldset {
   width: min(calc(100% - 48px), 1440px);
   margin-inline: auto;
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr auto;
+  grid-template-columns: 0.72fr 1.05fr 0.82fr auto;
   align-items: end;
-  gap: clamp(30px, 7vw, 110px);
+  gap: clamp(26px, 4.5vw, 72px);
   padding: clamp(68px, 9vw, 120px) 0 38px;
   border-top: 1px solid var(--line-strong);
 }
@@ -2117,6 +2117,37 @@ fieldset {
   font-size: clamp(1.9rem, 3.5vw, 3.5rem);
   font-weight: 400;
   letter-spacing: -0.04em;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  font-style: normal;
+}
+
+.footer-contact p {
+  margin-bottom: 3px;
+  color: var(--linen-faint);
+  font-size: 0.68rem;
+}
+
+.footer-contact a {
+  width: fit-content;
+  border-bottom: 1px solid transparent;
+  color: var(--amethyst-light);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.025em;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.footer-contact a:hover {
+  border-color: var(--amethyst);
+  color: var(--linen);
 }
 
 .site-footer > a {
@@ -2376,8 +2407,7 @@ fieldset {
   }
 
   .site-footer > a {
-    grid-column: 1 / -1;
-    justify-self: start;
+    justify-self: end;
   }
 }
 
@@ -2710,6 +2740,10 @@ fieldset {
 
   .footer-copy {
     padding-block: 12px;
+  }
+
+  .site-footer > a {
+    justify-self: start;
   }
 }
 
