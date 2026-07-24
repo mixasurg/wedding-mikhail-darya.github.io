@@ -32,9 +32,20 @@ export default function StylePage() {
           <p>Если захотите поддержать визуальный код свадьбы, нам будет особенно приятно увидеть винные, шоколадные, сливочные и сложные лиловые оттенки. Но это не требование.</p>
         </header>
         <figure className="dress-visual">
-          <Image src={`${publicBasePath}/dress-code.png`} alt="Примеры женских и мужских образов для дресс-кода свадьбы"
-            width={1415} height={809} sizes="(max-width: 900px) 100vw, 1200px" unoptimized />
-          <figcaption><span>reference.board / soft violet edition</span><span>01—06</span></figcaption>
+          <div
+            className="dress-board-scroll"
+            role="region"
+            aria-label="Галерея примеров образов. На телефоне проведите в сторону, чтобы рассмотреть все варианты."
+            tabIndex={0}
+          >
+            <Image src={`${publicBasePath}/dress-code.png`} alt="Примеры женских и мужских образов для дресс-кода свадьбы"
+              width={1415} height={811} sizes="(max-width: 600px) 760px, 1200px" unoptimized />
+          </div>
+          <figcaption>
+            <span>reference.board / soft violet edition</span>
+            <span className="dress-frame-index">01—06</span>
+            <span className="dress-scroll-hint">Листайте, чтобы рассмотреть →</span>
+          </figcaption>
         </figure>
         <div className="palette-grid" aria-label="Палитра дресс-кода">
           {dressColors.map((color, index) => (

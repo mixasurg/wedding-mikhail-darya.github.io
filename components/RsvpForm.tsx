@@ -179,17 +179,28 @@ export default function RsvpForm() {
   };
 
   if (status === "success") {
+    const firstName = form.name.trim().split(/\s+/)[0] || "гость";
+
     return (
       <div className="rsvp-success" role="status">
         <div className="success-orbit" aria-hidden="true">
           <span>✓</span>
         </div>
         <p className="terminal-kicker">response.saved = true</p>
-        <h2>Ответ записан</h2>
-        <p>
-          Спасибо, {form.name.split(" ")[0]}. Мы получили вашу анкету и очень
-          ждём встречи.
-        </p>
+        <h2>
+          {attending ? "До встречи на свадьбе!" : "Спасибо, что сообщили"}
+        </h2>
+        {attending ? (
+          <p>
+            Спасибо, {firstName}. Мы получили вашу анкету и очень ждём встречи
+            17 октября.
+          </p>
+        ) : (
+          <p>
+            Спасибо, {firstName}. Нам будет вас не хватать в этот день, но мы
+            очень ценим, что вы дали знать. Будем мысленно рядом!
+          </p>
+        )}
       </div>
     );
   }
