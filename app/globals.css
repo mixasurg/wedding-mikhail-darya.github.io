@@ -1423,6 +1423,22 @@ fieldset {
   font-size: clamp(0.9rem, 1.2vw, 1.05rem);
 }
 
+.dress-optional-copy > .dress-white-note {
+  width: fit-content;
+  margin-top: 16px;
+  padding: 8px 13px;
+  border: 1px solid rgba(253, 241, 226, 0.34);
+  border-radius: 999px;
+  background: rgba(253, 241, 226, 0.1);
+  color: var(--linen);
+  font-family: var(--mono);
+  font-size: clamp(0.68rem, 0.9vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 1.4;
+  box-shadow: 0 0 22px rgba(253, 241, 226, 0.08);
+}
+
 .dress-optional-mark {
   position: relative;
   z-index: 1;
