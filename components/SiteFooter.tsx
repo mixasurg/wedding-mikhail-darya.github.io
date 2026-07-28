@@ -13,18 +13,12 @@ export default function SiteFooter() {
       <div className="footer-copy">
         <p>До встречи в нашей новой реальности</p>
         <strong>Михаил × Дарья</strong>
+        <address className="footer-organizer">
+          <span>Организатор</span>
+          <a href="https://t.me/saltwedding">@saltwedding</a>
+          <a href="tel:+79200966068">+7 920 096 6068</a>
+        </address>
       </div>
-      <address className="footer-contact">
-        <p>Организационные вопросы</p>
-        <a
-          href="https://t.me/saltwedding"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Telegram · @saltwedding
-        </a>
-        <a href="tel:+79200966068">+7 920 096 6068</a>
-      </address>
       <Link href="/rsvp">Подтвердить участие ↗</Link>
     </footer>
   );

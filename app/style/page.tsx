@@ -22,7 +22,9 @@ export default function StylePage() {
           <p>choice.mode = optional</p>
           <strong>Дресс-код не обязателен</strong>
           <span>Только по вашему желанию — приходите в том, в чём вам комфортно.</span>
-          <span className="dress-white-note">Единственная просьба: оставьте белый для невесты</span>
+          <span className="dress-white-note">
+            Единственная просьба: оставьте белый для невесты
+          </span>
         </div>
         <span className="dress-optional-mark" aria-hidden="true">✓</span>
       </aside>

@@ -10,14 +10,17 @@ import {
 const RSVP_ENDPOINT =
   "https://script.google.com/macros/s/AKfycby4pCMXYpiwDpssPY1krmH58hIDRxIwF1DUFE7Ycs8sEpzocmaNTzIX4rIPRODjnYYO/exec";
 
+const NO_ALCOHOL_OPTION = "Не пью алкоголь";
+
 const drinks = [
+  NO_ALCOHOL_OPTION,
   "Белое сухое вино",
   "Белое сладкое вино",
   "Красное сухое вино",
   "Красное сладкое вино",
   "Розовое сухое вино",
   "Розовое сладкое вино",
-  "Игристое сухое (брют)",
+  "Игристое брют",
   "Игристое сладкое",
   "Коньяк",
   "Ром",
@@ -107,6 +110,10 @@ export default function RsvpForm() {
     }
 
     if (step === 2) {
+      if (form.drinks.length === 0) {
+        setError("Выберите хотя бы один вариант напитков.");
+        return;
+      }
       if (!form.mealMain) {
         setError("Выберите вариант горячего.");
         return;
@@ -122,11 +129,22 @@ export default function RsvpForm() {
   };
 
   const toggleDrink = (drink: string) => {
+    if (drink === NO_ALCOHOL_OPTION) {
+      setField(
+        "drinks",
+        form.drinks.includes(NO_ALCOHOL_OPTION) ? [] : [NO_ALCOHOL_OPTION],
+      );
+      return;
+    }
+
+    const alcoholicDrinks = form.drinks.filter(
+      (item) => item !== NO_ALCOHOL_OPTION,
+    );
     setField(
       "drinks",
-      form.drinks.includes(drink)
-        ? form.drinks.filter((item) => item !== drink)
-        : [...form.drinks, drink],
+      alcoholicDrinks.includes(drink)
+        ? alcoholicDrinks.filter((item) => item !== drink)
+        : [...alcoholicDrinks, drink],
     );
   };
 
@@ -141,6 +159,12 @@ export default function RsvpForm() {
     if (attending && !form.mealMain) {
       event.preventDefault();
       setError("Выберите вариант горячего.");
+      return;
+    }
+
+    if (attending && form.drinks.length === 0) {
+      event.preventDefault();
+      setError("Выберите хотя бы один вариант напитков.");
       return;
     }
 
@@ -329,9 +353,15 @@ export default function RsvpForm() {
               <h2>Расскажите о предпочтениях</h2>
             </header>
 
-            <fieldset className="choice-section">
+            <fieldset
+              className="choice-section"
+              aria-describedby="drinks-help"
+              aria-required="true"
+            >
               <legend>Алкогольные предпочтения</legend>
-              <p className="field-help">Можно выбрать несколько вариантов.</p>
+              <p className="field-help" id="drinks-help">
+                Выберите хотя бы один вариант. Можно выбрать несколько.
+              </p>
               <div className="option-grid drinks-grid">
                 {drinks.map((drink) => (
                   <label className="chip-choice" key={drink}>
