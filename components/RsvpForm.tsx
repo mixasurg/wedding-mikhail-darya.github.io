@@ -68,6 +68,8 @@ export default function RsvpForm() {
     "idle" | "sending" | "success" | "error"
   >("idle");
   const [error, setError] = useState("");
+  const wizardRef = useRef<HTMLFormElement>(null);
+  const previousStepRef = useRef(step);
   const submissionPending = useRef(false);
   const submissionTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -80,6 +82,26 @@ export default function RsvpForm() {
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (previousStepRef.current === step) {
+      return;
+    }
+    previousStepRef.current = step;
+
+    const frame = window.requestAnimationFrame(() => {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      wizardRef.current?.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [step]);
 
   const setField = <K extends keyof FormState>(
     field: K,
@@ -230,6 +252,7 @@ export default function RsvpForm() {
   return (
     <>
       <form
+        ref={wizardRef}
         className="rsvp-wizard"
         action={RSVP_ENDPOINT}
         method="POST"

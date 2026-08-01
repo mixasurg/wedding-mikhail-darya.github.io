@@ -1586,6 +1586,7 @@ fieldset {
 }
 
 .rsvp-wizard {
+  scroll-margin-top: 96px;
   border: 1px solid var(--line-strong);
   background:
     linear-gradient(150deg, rgba(171, 146, 191, 0.055), transparent 38%),
